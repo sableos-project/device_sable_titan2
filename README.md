@@ -1,14 +1,16 @@
 # SableOS device_sable_titan2
 
-Status: **placeholder-only / N0 preparation**
+Status: **N0_A16 strategy accepted / public build still fail-closed**
 
-This repository will hold the public Titan 2 device adaptation boundary for
-SableOS. It is intentionally documentation-only at creation time.
+This repository holds the public Titan 2 device adaptation boundary for SableOS.
+It remains documentation-only until the first Titan 2 artifact is built,
+verified and explicitly promoted into public build tooling.
 
 ```text
 DEVICE=titan2
-MILESTONE=N0
-REPOSITORY_STATUS=PLACEHOLDER_ONLY
+MILESTONE=N0_A16
+REPOSITORY_STATUS=STRATEGY_DOCUMENTED
+ARTIFACT_KIND=gsi-system-image candidate
 BUILD_IMAGE_PUBLIC=NO
 FLASH_PUBLIC=NO
 FIRST_SABLE_ARTIFACT=ABSENT
@@ -18,15 +20,12 @@ PRODUCTION_REPRODUCIBILITY_CLAIM=NO
 
 ## Current purpose
 
-This repository exists so public SableOS composition can refer to a stable device
-adapter location before any Titan 2 build or deployment claim is made.
+This repository records the public device boundary for Titan 2:
 
-The first public work is to document:
-
-- the exact stock firmware/vendor basis required for Titan 2 N0;
-- the artifact decision between `gsi-system-image`, `generated-super-image`, and
-  a bounded `system/product/system_ext` bundle;
-- the deployment gate that must be satisfied before any E3/N0 flash attempt.
+- exact stock firmware/vendor basis required for Titan 2 N0_A16;
+- clean AOSP Android 16 ARM64 GSI as the first system-image substrate;
+- RestlessOS as reference/future fork, not the first boot dependency;
+- deployment gates that must remain closed before any E3/N0 flash attempt.
 
 ## Hard boundaries
 
@@ -45,7 +44,7 @@ This repository must not contain:
 Titan 2 public build-image and flash paths remain fail-closed in
 `sableos-project/build`. This repository does not override that posture.
 
-## Initial documents
+## Documents
 
 ```text
 docs/STOCK_BASIS.md
@@ -53,6 +52,9 @@ docs/STOCK_BASIS.md
 
 docs/ARTIFACT_DECISION.md
     decision record for gsi-system-image vs generated super image vs bounded bundle
+
+docs/TREBLE_STRATEGY.md
+    Titan 2 Treble portability strategy and RestlessOS role
 
 docs/DEPLOYMENT_GATE.md
     prerequisites for first E3/N0 deployment
@@ -64,5 +66,7 @@ docs/DEPLOYMENT_GATE.md
 - `build` owns public build, signing, verification and deployment contracts.
 - this repository owns Titan 2 device-adapter documentation and, later, public
   device adaptation files when qualified.
+- `sableos-project/treble_restlessos`, once created, will own the common
+  RestlessOS/Treble fork boundary, not Titan-specific deployment policy.
 - the private integration repository may carry pre-public working skeletons until
   source, provenance, licensing and privacy review complete.
