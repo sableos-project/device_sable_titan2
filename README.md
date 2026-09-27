@@ -56,6 +56,12 @@ docs/ARTIFACT_DECISION.md
 docs/TREBLE_STRATEGY.md
     Titan 2 Treble portability strategy and RestlessOS role
 
+docs/N0C_ANDROID17_RESTLESS_DSU_REPRO_RUNBOOK.md
+    Android 17 RestlessOS public-only DSU/reproducibility research runbook
+
+docs/RESTLESSOS_TITAN2_BUILD_NOTES.md
+    R6/R7/R7D RestlessOS lessons for Titan 2 and Titan 2 Elite GSI builds
+
 docs/DEPLOYMENT_GATE.md
     prerequisites for first E3/N0 deployment
 ```
