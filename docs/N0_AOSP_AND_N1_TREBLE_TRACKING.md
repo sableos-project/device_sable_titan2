@@ -61,6 +61,27 @@ Artifact allowlists: Sable product makefile only
 AOSP build/make base files: no Sable product ownership
 ```
 
+## N1-SABLE multilingual readiness requirement
+
+N1-SABLE must treat physical keyboard language support and Sable UI localization readiness as one product requirement.
+
+```text
+N1_MULTILINGUAL_READINESS_REQUIRED=YES
+FULL_LANGUAGE_PACKS_REQUIRED_IN_N1=NO
+KEYBOARD_ONLY_MULTILINGUAL=NOT_ACCEPTABLE
+UI_AND_KEYBOARD_LANGUAGE_ALIGNMENT=REQUIRED
+```
+
+The device-facing contract is tracked in `docs/N1_SABLE_MULTILINGUAL_READINESS.md`.
+
+Titan keyboard support must distinguish `.kl` scan-code mappings, `.kcm` character/dead-key mappings, and IME requirements for complex-script input. Multiple keyboard layouts should not be treated as complete language support unless the UI/resource and input-method paths are also accounted for.
+
+The expected N1 gate is:
+
+```text
+N1_SABLE_LOCALE_KEYBOARD_CONTRACT
+```
+
 ## Physical device gate
 
 No physical device contact or flash attempt is authorized by this tracking update.
