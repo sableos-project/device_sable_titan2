@@ -60,6 +60,33 @@ Planned common fork:
 sableos-project/treble_restlessos
 ```
 
+## Android 17 research lane
+
+SableOS may evaluate Android 17 RestlessOS in parallel as N0C research, but this
+is not a baseline pivot away from Android 16 until physical Titan 2 validation
+passes.
+
+```text
+LANE=N0C_ANDROID17_RESTLESS_PUBLIC_ONLY_DSU_RESEARCH
+PRIMARY_BASELINE=N0B_ANDROID16_PENDING_R7D_RESULT
+RESTLESSOS_TAG=17.0.0-202609271006
+GRAPHENEOS_TAG=2026091900
+PRODUCT=treble_arm64_bvN
+FLASH_PUBLIC=NO
+SABLE_OVERLAY_INCLUDED=NO
+```
+
+The N0C lane is documented in:
+
+```text
+docs/N0C_ANDROID17_RESTLESS_DSU_REPRO_RUNBOOK.md
+docs/RESTLESSOS_TITAN2_BUILD_NOTES.md
+```
+
+N0C must remain public-only, reproducible, DSU-first, and free of Titan-specific
+input daemons until a baseline image boots and device evidence justifies further
+integration.
+
 ## Deployment boundary
 
 A successful build does not authorize flash. E3/N0 deployment remains closed
