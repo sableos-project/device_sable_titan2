@@ -32,6 +32,22 @@ avb_strategy_explicit=YES
 serial_targeting_required=YES
 ```
 
+## Titan 2 flash model
+
+Titan 2 must not inherit Pixel/Panther flashing assumptions. The N0/N1 flash
+policy is recorded in [N0_N1_FLASH_PLAN_LEDGER.md](N0_N1_FLASH_PLAN_LEDGER.md)
+and remains fail-closed.
+
+```text
+PIXEL_FASTBOOT_ASSUMPTIONS_ALLOWED=NO
+PANTHER_ARTIFACT_FLASH_TO_TITAN2_ALLOWED=NO
+FASTBOOT_BOOT=UNSUPPORTED
+DSU=UNAVAILABLE_ON_TESTED_STOCK_BUILD
+FASTBOOTD_MUST_BE_VERIFIED_BY_GETVAR_IS_USERSPACE_YES=YES
+USERDATA_WIPE_IMPLICIT_ALLOWED=NO
+WRITE_CAPABLE_FLASH_SCRIPT=NO
+```
+
 ## Safety boundaries
 
 The first E3/N0 deployment must not:
