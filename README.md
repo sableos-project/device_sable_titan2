@@ -56,6 +56,9 @@ docs/ARTIFACT_DECISION.md
 docs/TREBLE_STRATEGY.md
     Titan 2 Treble portability strategy and RestlessOS role
 
+docs/N0B_R7E_ANDROID16_RESTLESS_PASS_SEAL_20260927.md
+    Android 16 RestlessOS public-only R7E build pass seal and deviations
+
 docs/N0C_ANDROID17_RESTLESS_DSU_REPRO_RUNBOOK.md
     Android 17 RestlessOS public-only DSU/reproducibility research runbook
 
