@@ -62,6 +62,9 @@ docs/N0C_ANDROID17_RESTLESS_DSU_REPRO_RUNBOOK.md
 docs/RESTLESSOS_TITAN2_BUILD_NOTES.md
     R6/R7/R7D RestlessOS lessons for Titan 2 and Titan 2 Elite GSI builds
 
+docs/DEVELOPER_PROFILE_TOOLS.md
+    Work Profile policy for Sable Terminal and Sable SSH developer/operator tools
+
 docs/DEPLOYMENT_GATE.md
     prerequisites for first E3/N0 deployment
 ```
