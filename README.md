@@ -1,6 +1,6 @@
 # SableOS device_sable_titan2
 
-Status: **N0_A16 strategy accepted / public build still fail-closed**
+Status: **public Titan device boundary / active canonical engineering is N1D/C3B; public build still fail-closed — 2026-10-02**
 
 This repository holds the public Titan 2 device adaptation boundary for SableOS.
 It remains documentation-only until the first Titan 2 artifact is built,
@@ -8,24 +8,52 @@ verified and explicitly promoted into public build tooling.
 
 ```text
 DEVICE=titan2
-MILESTONE=N0_A16
-REPOSITORY_STATUS=STRATEGY_DOCUMENTED
-ARTIFACT_KIND=gsi-system-image candidate
+HISTORICAL_PUBLIC_MILESTONE=N0_A16
+ACTIVE_CANONICAL_ENGINEERING_MILESTONE=N1D_C3B
+REPOSITORY_STATUS=DEVICE_BOUNDARY_AND_EVIDENCE
+ACTIVE_CANONICAL_ARTIFACT_KIND=systemimage engineering candidate
 BUILD_IMAGE_PUBLIC=NO
 FLASH_PUBLIC=NO
-FIRST_SABLE_ARTIFACT=ABSENT
-FIRST_SABLE_BOOT=NOT_RUN
+FIRST_PUBLIC_SABLE_ARTIFACT=ABSENT
+FIRST_PUBLIC_SABLE_BOOT=NOT_RUN
 PRODUCTION_REPRODUCIBILITY_CLAIM=NO
 ```
 
 ## Current purpose
 
-This repository records the public device boundary for Titan 2:
+This repository records the public device boundary and preserved Titan 2
+bring-up evidence.
 
-- exact stock firmware/vendor basis required for Titan 2 N0_A16;
-- clean AOSP Android 16 ARM64 GSI as the first system-image substrate;
-- RestlessOS as reference/future fork, not the first boot dependency;
-- deployment gates that must remain closed before any E3/N0 flash attempt.
+The earlier N0/AOSP-first documents remain useful historical strategy/evidence,
+but current canonical engineering is the private N1D/C3B lane:
+
+- Graphene/AOSP-derived Android 16 base;
+- minimal Treble scaffold;
+- compatibility-peel admission rather than the full RestlessOS runtime stack;
+- `systemimage` engineering target before product/runtime/release admission;
+- public build/flash/signing remain closed until separately qualified.
+
+RestlessOS/TrebleDroid remains a compatibility reference and known-fix inventory,
+not the Sable product/security baseline.
+
+## Current product/design bindings
+
+This device repository does not own common HOME, IME or Camera UX policy.
+
+Current common authority is in `sableos-project/platform_sable`:
+
+```text
+SABLE_FIRST_PARTY_HOME=Launcher3QuickStep hosting Sable Start
+THIRD_PARTY_HOME_SELECTION_ALLOWED=YES
+SABLE_FIRST_PARTY_IME=SableKeyboard
+THIRD_PARTY_IME_SELECTION_ALLOWED=YES
+SABLE_CAMERA_DIRECTION=Camera Control Deck
+PASTIERA_086_ROLE=behavior/product reference only
+```
+
+The Camera Control Deck is an interaction requirement, not device-camera
+capability evidence. Titan 2 must still prove key delivery, AF/AE behavior,
+focus-point geometry, orientation and HAL capability on hardware.
 
 ## Hard boundaries
 
@@ -74,11 +102,11 @@ docs/DEPLOYMENT_GATE.md
 
 ## Source-of-truth relationship
 
-- `platform_manifest` records composition and artifact identity.
+- `platform_manifest` records current composition and artifact identity; its old N0 placeholder is historical once superseded by N1D/C3B authority.
 - `build` owns public build, signing, verification and deployment contracts.
 - this repository owns Titan 2 device-adapter documentation and, later, public
   device adaptation files when qualified.
 - `sableos-project/treble_restlessos`, once created, will own the common
   RestlessOS/Treble fork boundary, not Titan-specific deployment policy.
-- the private integration repository may carry pre-public working skeletons until
-  source, provenance, licensing and privacy review complete.
+- the private integration repository is the current N1D/C3B engineering and product-integration authority until qualified pieces are published;
+- organization-level current-policy pointers live in `sableos-project/.github` so historical device evidence is not mistaken for current product architecture.
