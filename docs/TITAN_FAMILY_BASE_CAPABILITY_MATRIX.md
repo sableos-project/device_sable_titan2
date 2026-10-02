@@ -71,6 +71,28 @@ CAMERA_GPS_TAG_BASE=YES
 CALL_RECORDER_BASE=YES
 ```
 
+## Sable product interaction bindings
+
+The stock/manual feature inventory above is evidence input, not a requirement
+that Sable Camera copy every stock mode.
+
+Current common product direction:
+
+```text
+SABLE_CAMERA_CONTROL_DECK_REQUIRED=YES
+CAMERA_CONTROL_DECK_IS_NEW_CAPTURE_MODE=NO
+PORTRAIT_CAMERA_SUPPORTED=YES
+LANDSCAPE_CONTROL_DECK_REQUIRED=YES
+GLOBAL_LANDSCAPE_LOCK=NO
+KEYBOARD_FOCUS_POINT_MOVE_REQUIRED=YES
+AF_AE_LOCK_DISCOVERABILITY_REQUIRED=YES
+TOUCH_CAMERA_FALLBACK_REQUIRED=YES
+CAMERA_CONTROL_DECK_RUNTIME_VALIDATED=NO
+```
+
+Runtime PASS must be established per device. Titan 2 Elite does not inherit
+Titan 2 camera/input evidence.
+
 ## Device gates
 
 ```text
