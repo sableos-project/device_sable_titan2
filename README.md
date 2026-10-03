@@ -1,6 +1,6 @@
 # SableOS device_sable_titan2
 
-Status: **public Titan device boundary / active canonical engineering is N1D/C3B E5B offline decision; public build still fail-closed — 2026-10-03**
+Status: **public Titan device boundary / active canonical engineering is N1D/C3B runtime recovery with sealed N1B control next; public build still fail-closed — 2026-10-03**
 
 This repository holds the public Titan 2 device adaptation boundary for SableOS.
 It remains documentation-only until the first Titan 2 artifact is built,
@@ -19,7 +19,10 @@ PRIVATE_C3B_E3_STATUS=SEALED_PASS
 FIRST_PUBLIC_SABLE_BOOT=NOT_RUN
 PRIVATE_C3B_E4_STATUS=SEALED_PASS
 PRIVATE_C3B_E5A_STATUS=PASS_REVIEW_READY_SEALED
-PRIVATE_C3B_E5B_MUTATION_AUTHORIZED=NO
+PRIVATE_N1D_PHYSICAL_RESULT=FAIL_REBOOT_LOOP
+PRIVATE_N1B_V010014_CONTROL=PENDING
+PRIVATE_N1E_BUILD_AUTHORIZED=NO_PENDING_N1B_CONTROL
+PRIVATE_N1E_FLASH_AUTHORIZED=NO
 PRODUCTION_REPRODUCIBILITY_CLAIM=NO
 ```
 
@@ -41,23 +44,40 @@ continuity passed, userspace fastbootd was confirmed, logical-partition
 allocation evidence was complete, snapshot/update state was idle/none, and
 fresh total-super capacity passed.
 
-The device is currently left in fastbootd. Private E5B mutation remains
-unauthorized. Historical Titan 2 evidence confirms that its Virtual A/B dynamic
-userspace does not expose two simultaneously materialized logical-system
-partitions: while slot A is active, `system_b` may be absent/zero even though
-alternate-slot LP metadata exists. Therefore `system_b=0` is not an inactive
-deployment target.
+The private active-system deployment mechanics remain useful evidence: Titan 2
+Virtual A/B does not require a materialized inactive `system_b`, so the proven
+current-slot `system_a` fastbootd path remains the control path. The first
+private N1D physical attempt, however, did not establish a stable boot and
+entered a reboot loop.
 
-The corrected private E5B model follows the proven N1B path: keep the current
-slot, evaluate active-slot COW cleanup and group capacity, target the active
-`system_<slot>` logical partition, preserve stock boot/vendor/AVB components,
-and treat first-boot factory reset as a separately authorized destructive step.
-The failed N1C whole-`super` write is negative evidence, not the primary path.
-No public artifact or physical C3B boot claim is made.
+The current working hypothesis is a missing system/vendor compatibility
+substrate after the N1D `COUNT=0` runtime-patch decision, but that is not
+recorded as a proven root cause. Historical N1B booted on V01.00.13 while the
+current stock/vendor state is V01.00.14, so the next physical experiment is the
+exact sealed N1B system artifact on current V01.00.14.
 
-Next canonical phases are the separately authorized E5B first physical C3B
-deployment/boot, E6 runtime baseline qualification and E7 evidence-driven
-compatibility.
+If N1B boots, private engineering may construct N1E as the exact N1B generated
+product/lunch identity plus only the five C3B applications and qualify it before
+flash. If N1B fails, N1E stops and the firmware/boot-chain/current-device-state
+delta is investigated. N1D/E6 remain frozen until a boot-qualified baseline is
+re-established. No public artifact or public flash authorization follows from
+this private control plan.
+
+## Current recovery decision
+
+```text
+N1D_BUILD_EVIDENCE=SEALED
+N1D_BOOT_QUALIFIED=NO
+N1D_RUNTIME_PATCH_ALLOWLIST_COUNT=0
+COUNT_ZERO_STATUS=PRIMARY_SUSPECT_NOT_PROVEN_ROOT_CAUSE
+N1B_CURRENT_FIRMWARE_CONTROL=NEXT
+N1E=N1B_PRODUCT_PLUS_FIVE_C3B_APPS_ONLY
+N1E_PRE_FLASH_QUALIFICATION=REQUIRED
+E6=HOLD
+```
+
+Public repositories remain evidence/documentation authority only and do not
+authorize the private N1B control or any later N1E flash.
 
 ## Current purpose
 
