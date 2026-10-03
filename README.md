@@ -1,6 +1,6 @@
 # SableOS device_sable_titan2
 
-Status: **public Titan device boundary / active canonical engineering is N1D/C3B; public build still fail-closed — 2026-10-02**
+Status: **public Titan device boundary / active canonical engineering is N1D/C3B E5B offline decision; public build still fail-closed — 2026-10-03**
 
 This repository holds the public Titan 2 device adaptation boundary for SableOS.
 It remains documentation-only until the first Titan 2 artifact is built,
@@ -15,8 +15,11 @@ ACTIVE_CANONICAL_ARTIFACT_KIND=Sable-composed systemimage engineering build
 BUILD_IMAGE_PUBLIC=NO
 FLASH_PUBLIC=NO
 FIRST_PUBLIC_SABLE_ARTIFACT=ABSENT
-PRIVATE_C3B_E3_STATUS=BUILD_RUNNING_NOT_YET_SEALED
+PRIVATE_C3B_E3_STATUS=SEALED_PASS
 FIRST_PUBLIC_SABLE_BOOT=NOT_RUN
+PRIVATE_C3B_E4_STATUS=SEALED_PASS
+PRIVATE_C3B_E5A_STATUS=PASS_REVIEW_READY_SEALED
+PRIVATE_C3B_E5B_MUTATION_AUTHORIZED=NO
 PRODUCTION_REPRODUCIBILITY_CLAIM=NO
 ```
 
@@ -28,16 +31,23 @@ Current private canonical state:
 C3B_E1_SYSTEMIMAGE=PASS
 C3B_E2_SOURCE_ADMISSION=PASS
 C3B_E3_BUILD_SOURCE=caf98dde723d07a071d95aaa1ef27d578d3208d8
-C3B_E3_STATUS=BUILD_RUNNING_NOT_YET_SEALED
+C3B_E3_STATUS=SEALED_PASS
 C3B_RUNTIME_PATCH_ALLOWLIST_COUNT=0
 ```
 
-The E3 run passed its pre-build compatibility/product/module gates before
-starting the long fresh systemimage build. No public artifact or physical boot
-claim is made from that fact.
+E3 and E4 are sealed PASS. Private E5A fresh read-only device-state
+revalidation also completed with PASS_REVIEW_READY: stock identity and slot
+continuity passed, userspace fastbootd was confirmed, logical-partition
+allocation evidence was complete, snapshot/update state was idle/none, and
+fresh total-super capacity passed.
 
-Next canonical phases are E4 artifact/deployment readiness, E5 first physical
-C3B boot, E6 runtime baseline qualification and E7 evidence-driven compatibility.
+The device is currently left in fastbootd. Private E5B mutation remains
+unauthorized; the active next step is an offline E5B slot/group-capacity
+decision package. No public artifact or physical SableOS boot claim is made.
+
+Next canonical phases are the separately authorized E5B first physical C3B
+deployment/boot, E6 runtime baseline qualification and E7 evidence-driven
+compatibility.
 
 ## Current purpose
 
