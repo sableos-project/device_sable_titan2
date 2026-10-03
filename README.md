@@ -11,13 +11,33 @@ DEVICE=titan2
 HISTORICAL_PUBLIC_MILESTONE=N0_A16
 ACTIVE_CANONICAL_ENGINEERING_MILESTONE=N1D_C3B
 REPOSITORY_STATUS=DEVICE_BOUNDARY_AND_EVIDENCE
-ACTIVE_CANONICAL_ARTIFACT_KIND=systemimage engineering candidate
+ACTIVE_CANONICAL_ARTIFACT_KIND=Sable-composed systemimage engineering build
 BUILD_IMAGE_PUBLIC=NO
 FLASH_PUBLIC=NO
 FIRST_PUBLIC_SABLE_ARTIFACT=ABSENT
+PRIVATE_C3B_E3_STATUS=BUILD_RUNNING_NOT_YET_SEALED
 FIRST_PUBLIC_SABLE_BOOT=NOT_RUN
 PRODUCTION_REPRODUCIBILITY_CLAIM=NO
 ```
+
+## Current C3B checkpoint
+
+Current private canonical state:
+
+```text
+C3B_E1_SYSTEMIMAGE=PASS
+C3B_E2_SOURCE_ADMISSION=PASS
+C3B_E3_BUILD_SOURCE=caf98dde723d07a071d95aaa1ef27d578d3208d8
+C3B_E3_STATUS=BUILD_RUNNING_NOT_YET_SEALED
+C3B_RUNTIME_PATCH_ALLOWLIST_COUNT=0
+```
+
+The E3 run passed its pre-build compatibility/product/module gates before
+starting the long fresh systemimage build. No public artifact or physical boot
+claim is made from that fact.
+
+Next canonical phases are E4 artifact/deployment readiness, E5 first physical
+C3B boot, E6 runtime baseline qualification and E7 evidence-driven compatibility.
 
 ## Current purpose
 
@@ -97,7 +117,7 @@ docs/DEVELOPER_PROFILE_TOOLS.md
     Work Profile policy for Sable Terminal and Sable SSH developer/operator tools
 
 docs/DEPLOYMENT_GATE.md
-    prerequisites for first E3/N0 deployment
+    historical deployment prerequisites; current deployment readiness is E4 after E3 seal
 ```
 
 ## Source-of-truth relationship
