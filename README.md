@@ -75,6 +75,17 @@ The Camera Control Deck is an interaction requirement, not device-camera
 capability evidence. Titan 2 must still prove key delivery, AF/AE behavior,
 focus-point geometry, orientation and HAL capability on hardware.
 
+Sable Hub is also common product semantics rather than a Titan-specific fork.
+Titan 2 integration must preserve the Panther Hub V1 Connected Apps contract:
+generic package+user discovery/configuration, Android notification/conversation
+ingestion, source-authorized RemoteInput reply, Open-app fallback and bounded
+local derived history. WhatsApp, Signal, Telegram and LinkedIn are
+compatibility/evidence targets, not a device-level hard-coded allowlist.
+Sable Messages work must not replace or weaken Sable Hub.
+
+The normative public contract is
+`sableos-project/platform_sable/docs/SABLE_HUB_PORTABILITY_CONTRACT.md`.
+
 ## Hard boundaries
 
 This repository must not contain:
