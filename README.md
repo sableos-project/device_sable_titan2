@@ -42,8 +42,18 @@ allocation evidence was complete, snapshot/update state was idle/none, and
 fresh total-super capacity passed.
 
 The device is currently left in fastbootd. Private E5B mutation remains
-unauthorized; the active next step is an offline E5B slot/group-capacity
-decision package. No public artifact or physical SableOS boot claim is made.
+unauthorized. Historical Titan 2 evidence confirms that its Virtual A/B dynamic
+userspace does not expose two simultaneously materialized logical-system
+partitions: while slot A is active, `system_b` may be absent/zero even though
+alternate-slot LP metadata exists. Therefore `system_b=0` is not an inactive
+deployment target.
+
+The corrected private E5B model follows the proven N1B path: keep the current
+slot, evaluate active-slot COW cleanup and group capacity, target the active
+`system_<slot>` logical partition, preserve stock boot/vendor/AVB components,
+and treat first-boot factory reset as a separately authorized destructive step.
+The failed N1C whole-`super` write is negative evidence, not the primary path.
+No public artifact or physical C3B boot claim is made.
 
 Next canonical phases are the separately authorized E5B first physical C3B
 deployment/boot, E6 runtime baseline qualification and E7 evidence-driven
