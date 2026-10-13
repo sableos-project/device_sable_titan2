@@ -1,3 +1,5 @@
+> **Current status (2026-10-12):** See [the reconciled engineering gate ledger](docs/ENGINEERING_STATUS_2026-10-12.md). Older milestone status below is retained as dated history. Titan 2 N1F/M4 full-image qualification and flash authorization remain OPEN.
+
 # SableOS device_sable_titan2
 
 Status: **public Titan device boundary / active canonical engineering is N1D/C3B runtime recovery with sealed N1B control next; public build still fail-closed — 2026-10-03**
